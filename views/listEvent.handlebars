@@ -1,0 +1,77 @@
+
+{{#if errors}}
+    {{#each errors}}
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<p class="bg-danger">
+							 {{ errors }}<br>
+					</p>
+				</div>
+			</div>
+		</div>
+	{{/each}}
+{{/if}}
+
+{{#if error}}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<p class="bg-danger"> {{ error }}</p>
+			</div>
+		</div>
+	</div>
+{{/if}}
+
+{{#if success}}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<p class="bg-success"> {{ success }}</p>
+		</div>
+	</div>
+</div>
+<br>
+{{/if}}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table whiteBG">
+				<thead>
+					<tr>
+						<th class="id"> {{ appText.lines.headings.tableHeadings.events.id }}</th>
+						<th class="name"> {{ appText.lines.headings.tableHeadings.events.name }}</th>
+						<th class="location"> {{ appText.lines.headings.tableHeadings.events.location }}</th>
+						<th class="startDate"> {{ appText.lines.headings.tableHeadings.events.startDate }}</th>
+						<th class="endDate"> {{ appText.lines.headings.tableHeadings.events.endDate }}</th>
+						<th class="actions text-center"> {{ appText.lines.headings.tableHeadings.events.actions }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{# each items}}
+				        <tr>
+				        	<td><strong> {{ this.e_id }}</strong></td>
+				        	<td> {{ this.e_name }}</td>
+				        	<td> {{ this.e_location }}<br /><small> {{ this.e_description }}</small></td>
+							<td> {{ this.e_date}}</td>
+							<!-- <td> {{ this.e_time }}</td> -->
+							<td class="text-center">
+								<a href="/events/ {{ this.e_id }}" class="btn btn-sm btn-success">Edit</a>
+								<a href="/events/delete/ {{ this.e_id }}" class="btn btn-sm btn-danger">Delete</a>
+							</td>
+				        </tr>
+				     {{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<a href="/events/add" class="btn btn-info"> {{ appText.lines.buttons.events.btnAdd }}</a>
+		</div>
+	</div>
+</div>
+<br>
