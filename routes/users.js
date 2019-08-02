@@ -76,7 +76,7 @@ router.post('/register', function (req, res) {
 	}
 });
 
-passport.use(new LocalStrategy(
+passport.use('user-local',new LocalStrategy(
 	function (username, password, done) {
 		User.getUserByUsername(username, function (err, user) {
 			if (err) throw err;
@@ -106,7 +106,7 @@ passport.deserializeUser(function (id, done) {
 });
 
 router.post('/login',
-	passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
+	passport.authenticate('user-local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
 	function (req, res) {
 		res.redirect('/');
 	});

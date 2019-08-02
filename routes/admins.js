@@ -76,25 +76,25 @@ router.post('/register', function (req, res) {
 	}
 });
 
-// passport.use(new LocalStrategy(
-// 	function (username, password, done) {
-// 		Admin.getUserByUsername(username, function (err, admin) {
-// 			if (err) throw err;
-// 			if (!admin) {
-// 				return done(null, false, { message: 'Unknown Admin' });
-// 			}
+passport.use('admin-local',new LocalStrategy(
+	function (username, password, done) {
+		Admin.getUserByUsername(username, function (err, admin) {
+			if (err) throw err;
+			if (!admin) {
+				return done(null, false, { message: 'Unknown Admin' });
+			}
 
-// 			Admin.comparePassword(password, admin.password, function (err, isMatch) {
-// 				if (err) throw err;
-// 				if (isMatch) {
-// 					return done(null, admin);
-// 					console.log(" suuccess, admin returned")
-// 				} else {
-// 					return done(null, false, { message: 'Invalid password' });
-// 				}
-// 			});
-// 		});
-// 	}));
+			Admin.comparePassword(password, admin.password, function (err, isMatch) {
+				if (err) throw err;
+				if (isMatch) {
+					return done(null, admin);
+					console.log(" suuccess, admin returned")
+				} else {
+					return done(null, false, { message: 'Invalid password' });
+				}
+			});
+		});
+	}));
 
 passport.serializeUser(function (admin, done) {
 	done(null, admin.id);
@@ -107,10 +107,7 @@ passport.deserializeUser(function (id, done) {
 });
 
 router.post('/login',
-	passport.authenticate('local', { successRedirect: '/', failureRedirect: '/admins/login', failureFlash: true }),
-	function (req, res) {
-		res.redirect('/');
-	});
+	passport.authenticate('admin-local', { successRedirect: '/', failureRedirect: '/admins/login', failureFlash: true }));
 
 router.get('/logout', function (req, res) {
 	req.logout();
