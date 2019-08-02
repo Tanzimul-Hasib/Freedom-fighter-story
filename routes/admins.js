@@ -96,15 +96,15 @@ router.post('/register', function (req, res) {
 // 		});
 // 	}));
 
-// passport.serializeUser(function (admin, done) {
-// 	done(null, admin.id);
-// });
+passport.serializeUser(function (admin, done) {
+	done(null, admin.id);
+});
 
-// passport.deserializeUser(function (id, done) {
-// 	Admin.getUserById(id, function (err, admin) {
-// 		done(err, admin);
-// 	});
-// });
+passport.deserializeUser(function (id, done) {
+	Admin.getUserById(id, function (err, admin) {
+		done(err, admin);
+	});
+});
 
 router.post('/login',
 	passport.authenticate('local', { successRedirect: '/', failureRedirect: '/admins/login', failureFlash: true }),
@@ -112,13 +112,13 @@ router.post('/login',
 		res.redirect('/');
 	});
 
-// router.get('/logout', function (req, res) {
-// 	req.logout();
+router.get('/logout', function (req, res) {
+	req.logout();
 
-// 	req.flash('success_msg', 'You are logged out');
+	req.flash('success_msg', 'You are logged out');
 
-// 	res.redirect('/admins/login');
-// });
+	res.redirect('/admins/login');
+});
 
 
 

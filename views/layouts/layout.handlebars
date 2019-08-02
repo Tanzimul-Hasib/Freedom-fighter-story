@@ -25,10 +25,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       {{#if user}}
-        <li role=""class="nav-item active"><a class="nav-link active" href="/">Dashbord <span class="sr-only">(current)</span></a> </li>
-        <li role=""class="nav-item"><a class="nav-link" href="/events">Events</a></li>
+        <li role=""class="nav-item active"><a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a> </li>
+        <li role=""class="nav-item"><a class="nav-link" href="/events">User Events</a></li>
         <li role=""class="nav-item"><a class="nav-link" href="/users/logout">Logout</a></li>
-
+        {{else if admin}}
+        <li role=""class="nav-item active"><a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a> </li>
+        <li role=""class="nav-item"><a class="nav-link" href="/events">Admin Events</a></li>
+        <li role=""class="nav-item"><a class="nav-link" href="/admins/logout">Logout</a></li>
         {{else}}
         <li role=""class="nav-item"><a class="nav-link" href="/users/login">Login</a></li>
         <li role=""class="nav-item"><a class="nav-link" href="/users/register">Register</a></li>
