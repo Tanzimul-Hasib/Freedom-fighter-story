@@ -15,66 +15,66 @@ router.get('/login', sureAuthenticatedAdmin, function (req, res) {
 res.render('loginAdmin',{title:"Login", layout:false});
 });
 
-// // Register Admin
-// router.post('/register', function (req, res) {
-// 	var name = req.body.name;
-// 	var phone= req.body.phone;
-// 	var email = req.body.email;
-// 	var username = req.body.username;
-// 	var password = req.body.password;
-// 	var password2 = req.body.password2;
+// Register Admin
+router.post('/register', function (req, res) {
+	var name = req.body.name;
+	var phone= req.body.phone;
+	var email = req.body.email;
+	var username = req.body.username;
+	var password = req.body.password;
+	var password2 = req.body.password2;
 
-// 	// Validation
-// 	req.checkBody('name', 'Name is required').notEmpty();
-// 	req.checkBody('phone', 'Phone Number is required').notEmpty();
-// 	req.checkBody('email', 'Email is required').notEmpty();
-// 	req.checkBody('email', 'Email is not valid').isEmail();
-// 	req.checkBody('username', 'Username is required').notEmpty();
-// 	req.checkBody('password', 'Password is required').notEmpty();
-// 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+	// Validation
+	req.checkBody('name', 'Name is required').notEmpty();
+	req.checkBody('phone', 'Phone Number is required').notEmpty();
+	req.checkBody('email', 'Email is required').notEmpty();
+	req.checkBody('email', 'Email is not valid').isEmail();
+	req.checkBody('username', 'Username is required').notEmpty();
+	req.checkBody('password', 'Password is required').notEmpty();
+	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-// 	var errors = req.validationErrors();
+	var errors = req.validationErrors();
 
-// 	if (errors) {
-// 		res.render('registerAdmin', {
-// 			errors: errors,
-// 			layout: false
-// 		});
-// 	}
-// 	else {
-// 		//checking for email and username are already taken
-// 		Admin.findOne({ username: {
-// 			"$regex": "^" + username + "\\b", "$options": "i"
-// 	}}, function (err, admin) {
-// 			Admin.findOne({ email: {
-// 				"$regex": "^" + email + "\\b", "$options": "i"
-// 		}}, function (err, mail) {
-// 				if (admin || mail) {
-// 					res.render('registerAdmin', {
-// 						admin: admin,
-// 						mail: mail,
-// 						layout:false
-// 					});
-// 				}
-// 				else {
-// 					var newAdmin = new Admin({
-// 						name: name,
-// 						email: email,
-// 						phone: phone,
-// 						username: username,
-// 						password: password
-// 					});
-// 					Admin.createUser(newAdmin, function (err, admin) {
-// 						if (err) throw err;
-// 						console.log(admin);
-// 					});
-//          	req.flash('success_msg', 'You are registered and can now login');
-// 					res.redirect('/admins/login');
-// 				}
-// 			});
-// 		});
-// 	}
-// });
+	if (errors) {
+		res.render('registerAdmin', {
+			errors: errors,
+			layout: false
+		});
+	}
+	else {
+		//checking for email and username are already taken
+		Admin.findOne({ username: {
+			"$regex": "^" + username + "\\b", "$options": "i"
+	}}, function (err, admin) {
+			Admin.findOne({ email: {
+				"$regex": "^" + email + "\\b", "$options": "i"
+		}}, function (err, mail) {
+				if (admin || mail) {
+					res.render('registerAdmin', {
+						admin: admin,
+						mail: mail,
+						layout:false
+					});
+				}
+				else {
+					var newAdmin = new Admin({
+						name: name,
+						email: email,
+						phone: phone,
+						username: username,
+						password: password
+					});
+					Admin.createUser(newAdmin, function (err, admin) {
+						if (err) throw err;
+						console.log(admin);
+					});
+         	req.flash('success_msg', 'You are registered and can now login');
+					res.redirect('/admins/login');
+				}
+			});
+		});
+	}
+});
 
 // passport.use(new LocalStrategy(
 // 	function (username, password, done) {
@@ -88,6 +88,7 @@ res.render('loginAdmin',{title:"Login", layout:false});
 // 				if (err) throw err;
 // 				if (isMatch) {
 // 					return done(null, admin);
+// 					console.log(" suuccess, admin returned")
 // 				} else {
 // 					return done(null, false, { message: 'Invalid password' });
 // 				}
@@ -105,11 +106,11 @@ res.render('loginAdmin',{title:"Login", layout:false});
 // 	});
 // });
 
-// router.post('/login',
-// 	passport.authenticate('local', { successRedirect: '/', failureRedirect: '/admins/login', failureFlash: true }),
-// 	function (req, res) {
-// 		res.redirect('/');
-// 	});
+router.post('/login',
+	passport.authenticate('local', { successRedirect: '/', failureRedirect: '/admins/login', failureFlash: true }),
+	function (req, res) {
+		res.redirect('/');
+	});
 
 // router.get('/logout', function (req, res) {
 // 	req.logout();
