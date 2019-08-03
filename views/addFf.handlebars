@@ -1,0 +1,101 @@
+<!-- &&&&&&&&&&&&&&&&&&&need error handling&&&&&&&&&&&&&&&&& -->
+<!-- Formating page -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Adding form -->
+			<form class="form-horizontal" method="post" action="/freedomFighters/add">
+				<!-- Name field -->
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="name" class="form-control" id="name" value="{{ formData.name }}">
+			    	</div>
+				</div>
+				<!-- Rank field -->
+				<div class="form-group">
+					<label for="rank" class="col-sm-2 control-label">Rank</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="rank" class="form-control" id="rank" value="{{ formData.rank }}">
+			    	</div>
+				</div>
+				<!-- birth field -->
+				<div class="form-group">
+					<label for="birth" class="col-sm-2 control-label">Birth</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="birth" class="form-control" id="birth" value="{{ formData.birth }}">
+			    	</div>
+				</div>
+				<!-- death field -->
+				<div class="form-group">
+					<label for="death" class="col-sm-2 control-label">Death</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="death" class="form-control" id="death" value="{{ formData.death }}">
+			    	</div>
+				</div>
+				<!-- education field -->
+				<div class="form-group">
+					<label for="education" class="col-sm-2 control-label">Education</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="education" class="form-control" id="education" value="{{ formData.education }}">
+			    	</div>
+				</div>
+				<!-- profission field -->
+				<div class="form-group">
+					<label for="profission" class="col-sm-2 control-label">Profission</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="profission" class="form-control" id="profission" value="{{ formData.profission }}">
+			    	</div>
+				</div>
+
+				<!-- Addresss field -->
+				<div class="form-group">
+					<label for="address" class="col-sm-2 control-label">Address</label>
+					<div class="col-sm-10">
+			      		<textarea name="address" id="address"  class="form-control" cols="30" rows="2">{{ formData.address }}</textarea>
+			    	</div>
+				</div>
+				<!-- family_members field -->
+				<div class="form-group">
+					<label for="family_members" class="col-sm-2 control-label">Family Members</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="family_members" class="form-control" id="family_members" value="{{ formData.family_members }}">
+			    	</div>
+				</div>
+
+				<!-- Story field -->
+				<div class="form-group">
+					<label for="story_1" class="col-sm-2 control-label">Story_1</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="story_1" class="form-control" id="story_1" value="{{ formData.story_1 }}">
+			    	</div>
+				</div>
+				<!-- Story field -->
+				<div class="form-group">
+					<label for="story_2" class="col-sm-2 control-label">Story_2</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="story_2" class="form-control" id="story_2" value="{{ formData.story_2 }}">
+			    	</div>
+				</div>
+
+				<!-- peoples_say field -->
+				<div class="form-group">
+					<label for="peoples_say" class="col-sm-2 control-label">Peoples_say</label>
+					<div class="col-sm-10">
+			      		<input type="text" name="peoples_say" class="form-control" id="peoples_say" value="{{ formData.peoples_say }}">
+			    	</div>
+				</div>
+
+				<!-- submit button -->
+				<div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				    	<input type="submit" name="submit" value="Submit" class="btn btn-success">
+				     	<a href="/" class="btn btn-danger">Cancel</a>
+				    </div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+add

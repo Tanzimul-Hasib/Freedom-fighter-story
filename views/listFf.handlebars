@@ -1,0 +1,71 @@
+
+{{#if errors}}
+    {{#each errors}}
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<p class="bg-danger">
+							 {{ errors }}<br>
+					</p>
+				</div>
+			</div>
+		</div>
+	{{/each}}
+{{/if}}
+
+{{#if error}}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<p class="bg-danger"> {{ error }}</p>
+			</div>
+		</div>
+	</div>
+{{/if}}
+
+{{#if success}}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<p class="bg-success"> {{ success }}</p>
+		</div>
+	</div>
+</div>
+<br>
+{{/if}}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table whiteBG">
+				<thead>
+					<tr>
+						<!-- <th class="id"> id</th> -->
+						<th class="name"> Name</th>
+						<th class="rank"> Rank</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{# each items}}
+				        <tr>
+				        	<td> {{ this.name }}</td>
+				        	<td> {{ this.rank }}<br /><small> {{ this.e_description }}</small></td>
+							<!-- <td> {{ this.e_time }}</td> -->
+							<td class="text-center">
+								<a href="/freedomFighters/{{ this._id }}" class="btn btn-sm btn-success">Edit</a>
+								<a href="/freedomFighters/delete/{{ this._id }}" class="btn btn-sm btn-danger">Delete</a>
+							</td>
+				        </tr>
+				     {{/each}}
+				</tbody>
+			</table>
+		</div></div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<a href="/freedomFighters/add" class="btn btn-info">Add new</a>
+		</div>
+	</div>
+</div>
+<br>

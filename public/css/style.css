@@ -16,8 +16,11 @@ body {
 .header,
 .marketing,
 .footer {
-  padding-right: 15px;
-  padding-left: 15px;
+  position: fixed;
+   bottom: 0;
+   width: 100%;
+   padding: 0.1rem;
+   text-align: center;
 }
 
 /* Custom page header */

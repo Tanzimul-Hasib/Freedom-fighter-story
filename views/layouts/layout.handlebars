@@ -26,14 +26,17 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       {{#if user}}
         <li role=""class="nav-item active"><a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a> </li>
-        <li role=""class="nav-item"><a class="nav-link" href="/events">User Events</a></li>
+        <!-- <li role=""class="nav-item"><a class="nav-link" href="/events">Events</a></li> -->
+        <li role=""class="nav-item"><a class="nav-link" href="/freedomFighters">Freedom Fighters list</a></li>
         <li role=""class="nav-item"><a class="nav-link" href="/users/logout">Logout</a></li>
         {{else if administrator}}
         <li role=""class="nav-item active"><a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a> </li>
-        <li role=""class="nav-item"><a class="nav-link" href="/events">Admin Events</a></li>
+        <!-- <li role=""class="nav-item"><a class="nav-link" href="/events">Admin Events</a></li> -->
+        <li role=""class="nav-item"><a class="nav-link" href="/freedomFighters">Freedom Fighters list</a></li>
         <li role=""class="nav-item"><a class="nav-link" href="/admins/logout">Logout</a></li>
+
         {{else}}
-        <li role=""class="nav-item"><a class="nav-link" href="/users/login">Login</a></li>
+        <li role=""class="nav-item"><a class="nav-link" href="/users/login">Login Admin</a></li>
         <li role=""class="nav-item"><a class="nav-link" href="/users/register">Register</a></li>
         {{/if}}
         
@@ -47,6 +50,6 @@
 
         
 <div class="row"><div class="col-lg-12" style="margin-top:70px">{{{body}}}</div></div>
-<footer class="footer"><p>&copy; 2015 LoginApp, Inc.</p></footer>
+<footer class="footer"><p>&copy; 2019 Freedom Fighters Story, Author:Hasib.</p></footer>
 </body>
 </html>
