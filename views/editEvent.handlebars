@@ -4,11 +4,12 @@
 	<div class="row">
 		<div class="col-md-12">
 			<!-- Adding form -->
-			<form class="form-horizontal" method="post" action="/events/add">
+			<form class="form-horizontal" method="post" action="/events/">
 				<div class="form-group">
+					<input type="hidden" name="_id" class="form-control" id="_id" value="{{ items._id }}">
 					<label for="e_name" class="col-sm-2 control-label">{{appText.lines.formLabels.events.name}}</label>
 					<div class="col-sm-10">
-			      		<input type="text" name="e_name" class="form-control" id="e_name" value="{{ formData.e_name }}">
+			      		<input type="text" name="e_name" class="form-control" id="e_name" value="{{ items.e_name }}">
 			    	</div>
 				</div>
 				<div class="form-group">
@@ -17,19 +18,19 @@
 			      		<input type="date" name="e_start_date" class="form-control" id="e_start_date" >
 			    	</div>
 			    	<div class="col-sm-5">
-			      		<input type="date" name="e_end_date" class="form-control" id="e_end_date" ">
+			      		<input type="date" name="e_end_date" class="form-control" id="e_end_date">
 			    	</div>
 				</div>
 				<div class="form-group">
 					<label for="e_location" class="col-sm-2 control-label">{{ appText.lines.formLabels.events.location }}</label>
 					<div class="col-sm-10">
-			      		<textarea name="e_location" id="e_location"  class="form-control" cols="30" rows="2">{{ formData.e_location }}</textarea>
+			      		<textarea name="e_location" id="e_location"  class="form-control" cols="30" rows="2">{{ items.e_location }}</textarea>
 			    	</div>
 				</div>
 				<div class="form-group">
 					<label for="e_desc" class="col-sm-2 control-label">{{ appText.lines.formLabels.events.description }}</label>
 					<div class="col-sm-10">
-			      		<textarea name="e_desc" id="e_desc"  class="form-control" cols="30" rows="2">{{ formData.e_desc }}</textarea>
+			      		<textarea name="e_desc" id="e_desc"  class="form-control" cols="30" rows="2">{{ items.e_desc }}</textarea>
 			    	</div>
 				</div>
 				<div class="form-group">

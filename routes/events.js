@@ -33,13 +33,22 @@ router.get('/add',function (req,res) {
     	moment: moment
     });
 });
-// Event/add page
-router.get('/edit',function (req,res) {
-    res.render('editEvent',{
-    	title:"test",
-    	appText:appText,
-    	moment: moment
-    });
+// Event/edit page
+router.get('/:id',function (req,res) {
+        Event.findById(req.params.id, function (err, result) {
+
+        if (err){
+            return;
+            console.log(err)
+        }
+
+        res.render('editEvent',{
+         title:"edit",
+         items:result,
+         appText:appText,
+         moment: moment
+        });
+});
 });
 
 // **************************************************Post request******************************************************
@@ -91,15 +100,43 @@ router.post('/add', function (req, res) {
                         console.log(event);
                     });
 
-
-
-
-
             req.flash('success_msg', 'You are registered and can now login');
             res.redirect('/events');
         
     }
 });
+
+
+// **************edit or update*************
+router.post('/',function (req,res) {
+        Event.findOneAndUpdate({_id:req.body._id}, req.body,{new:true}, function (err, result) {
+
+        if (err){
+            return;
+            console.log(err)
+        }
+        else{
+            res.redirect('/events/');
+        }
+        
+    });
+});
+// ***********************************Delete*******************
+router.get('/delete/:id',function (req,res) {
+        Event.findByIdAndRemove(req.params.id, function (err, result) {
+
+        if (err){
+            return;
+            console.log(err)
+        }
+
+        else{
+            res.redirect('/events/');
+        }
+});
+});
+
+
 
 
 

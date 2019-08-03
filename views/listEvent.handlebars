@@ -57,15 +57,14 @@
 							<td> {{ this.e_date}}</td>
 							<!-- <td> {{ this.e_time }}</td> -->
 							<td class="text-center">
-								<a href="/events/ {{ this.e_id }}" class="btn btn-sm btn-success">Edit</a>
-								<a href="/events/delete/ {{ this.e_id }}" class="btn btn-sm btn-danger">Delete</a>
+								<a href="/events/{{ this._id }}" class="btn btn-sm btn-success">Edit</a>
+								<a href="/events/delete/{{ this._id }}" class="btn btn-sm btn-danger">Delete</a>
 							</td>
 				        </tr>
 				     {{/each}}
 				</tbody>
 			</table>
-		</div>
-	</div>
+		</div></div>
 </div>
 <div class="container">
 	<div class="row">

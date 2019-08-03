@@ -45,13 +45,13 @@ router.post('/register', function (req, res) {
 		//checking for email and username are already taken
 		Admin.findOne({ username: {
 			"$regex": "^" + username + "\\b", "$options": "i"
-	}}, function (err, admin) {
+	}}, function (err, administrator) {
 			Admin.findOne({ email: {
 				"$regex": "^" + email + "\\b", "$options": "i"
 		}}, function (err, mail) {
-				if (admin || mail) {
+				if (administrator || mail) {
 					res.render('registerAdmin', {
-						admin: admin,
+						administrator: administrator,
 						mail: mail,
 						layout:false
 					});
@@ -64,9 +64,9 @@ router.post('/register', function (req, res) {
 						username: username,
 						password: password
 					});
-					Admin.createUser(newAdmin, function (err, admin) {
+					Admin.createUser(newAdmin, function (err, administrator) {
 						if (err) throw err;
-						console.log(admin);
+						console.log(administrator);
 					});
          	req.flash('success_msg', 'You are registered and can now login');
 					res.redirect('/admins/login');
@@ -76,19 +76,19 @@ router.post('/register', function (req, res) {
 	}
 });
 
-passport.use('admin-local',new LocalStrategy(
+passport.use('administrator-local',new LocalStrategy(
 	function (username, password, done) {
-		Admin.getUserByUsername(username, function (err, admin) {
+		Admin.getUserByUsername(username, function (err, administrator) {
 			if (err) throw err;
-			if (!admin) {
+			if (!administrator) {
 				return done(null, false, { message: 'Unknown Admin' });
 			}
 
-			Admin.comparePassword(password, admin.password, function (err, isMatch) {
+			Admin.comparePassword(password, administrator.password, function (err, isMatch) {
 				if (err) throw err;
 				if (isMatch) {
-					return done(null, admin);
-					console.log(" suuccess, admin returned")
+					return done(null, administrator);
+					console.log(" suuccess, administrator returned")
 				} else {
 					return done(null, false, { message: 'Invalid password' });
 				}
@@ -96,18 +96,21 @@ passport.use('admin-local',new LocalStrategy(
 		});
 	}));
 
-passport.serializeUser(function (admin, done) {
-	done(null, admin.id);
+passport.serializeUser(function (administrator, done) {
+	done(null, administrator.id);
 });
 
 passport.deserializeUser(function (id, done) {
-	Admin.getUserById(id, function (err, admin) {
-		done(err, admin);
+	Admin.getUserById(id, function (err, administrator) {
+		done(err, administrator);
 	});
 });
 
 router.post('/login',
-	passport.authenticate('admin-local', { successRedirect: '/', failureRedirect: '/admins/login', failureFlash: true }));
+	passport.authenticate('administrator-local', { successRedirect: '/', failureRedirect: '/admins/login', failureFlash: true }),
+	function (req, res) {
+		res.redirect('/');
+	});
 
 router.get('/logout', function (req, res) {
 	req.logout();
