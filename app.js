@@ -37,6 +37,7 @@ var users = require('./routes/users');
 var events = require('./routes/events');
 var admins = require('./routes/admins');
 var freedomFighters = require('./routes/freedomFighters');
+var index = require('./routes/index');
 
 
 // View Engine
@@ -101,6 +102,7 @@ app.use('/users', users);
 app.use('/events', events);
 app.use('/admins', admins);
 app.use('/freedomFighters', freedomFighters);
+app.use('/index', index);
 
 
 // Set Port

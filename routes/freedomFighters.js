@@ -32,7 +32,7 @@ router.get('/add',ensureAuthenticated,function (req,res) {
     });
 });
 // FF/edit page
-router.get('/:id',ensureAuthenticated,function (req,res) {
+router.get('/edit/:id',ensureAuthenticated,function (req,res) {
         FF.findById(req.params.id, function (err, result) {
 
         if (err){

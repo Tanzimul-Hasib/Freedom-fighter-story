@@ -1,3 +1,28 @@
 
 <h2 class="page-header">Want to know about freedom fighters</h2>
-<p style="color: #761c19 ">Welcome to your dashboard</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table whiteBG">
+				<thead>
+					<tr>
+						<!-- <th class="id"> id</th> -->
+						<th class="name"> Name</th>
+						<th class="name"> Rank</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{# each items}}
+				        <tr style="background-color: #c41a1a;color:#FFF;border: 2px solid white;">
+				        	<td><strong> {{ this.name }}<strong></td>
+				        	<td> {{ this.rank }}<br /><small> {{ this.e_description }}</small></td>
+							<!-- <td> {{ this.e_time }}</td> -->
+							<td class="text-center">
+								<a href="/index/details/{{ this._id }}" class="btn btn-sm btn-success">Details</a>
+							</td>
+				        </tr>
+				     {{/each}}
+				</tbody>
+			</table>
+		</div></div>
+</div>
