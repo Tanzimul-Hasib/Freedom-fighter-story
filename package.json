@@ -21,7 +21,7 @@
     "express-session": "*",
     "express-validator": "^5.3.1",
     "jquery": "^3.3.1",
-    "moment": "^2.19.1",
+    "moment": "^2.29.2",
     "mongodb": "*",
     "mongoose": "*",
     "mysql": "^2.15.0",
